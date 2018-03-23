@@ -88,7 +88,7 @@ SAR=SAR((0:nsrc-1).'*nsrc+perm);
 
 return;
 
-
+end
 
 function [s_true,e_spat,e_interf,e_artif]=bss_decomp_mtifilt(se,s,j,flen)
 
@@ -130,7 +130,7 @@ e_artif=[se,zeros(nchan,flen-1)]-s_true-e_spat-e_interf;
 
 return;
 
-
+end
 
 function sproj=project(se,s,flen)
 
@@ -182,7 +182,7 @@ for k=1:nchan*nsrc,
 end
 
 return;
-
+end
 
 
 function [SDR,ISR,SIR,SAR]=bss_image_crit(s_true,e_spat,e_interf,e_artif)
@@ -225,3 +225,5 @@ SIR=10*log10(sum(sum((s_true+e_spat).^2))/sum(sum(e_interf.^2)));
 SAR=10*log10(sum(sum((s_true+e_spat+e_interf).^2))/sum(sum(e_artif.^2)));
 
 return;
+
+end
