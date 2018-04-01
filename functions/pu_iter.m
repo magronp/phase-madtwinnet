@@ -33,7 +33,7 @@ for t=2:T
     
         % Initialization
         for j=1:J
-            f_inf = freq_influence(abs(Ye(:,t,j))+eps)-1;
+            f_inf = get_frequencies_qifft_frame(abs(Ye(:,t,j))+eps);
             phiaux = angle(Ye(:,t-1,j))+phase_increment*f_inf;
             Ye(:,t,j) = abs(Ye(:,t,j)) .* exp(1i * phiaux);
         end
@@ -59,7 +59,7 @@ end
 
 
 % PU: frequencies and regions of influence
-function [f_inf,f_centr,f_harm] = freq_influence(v)
+function [f_inf,f_centr,f_harm] = get_frequencies_qifft_frame(v)
 
 v = v(:)';
 
@@ -91,7 +91,7 @@ if (Nfreq >0)
         index_lim(ind) = fin;
     end
 
-    f_inf(deb:end) = f_harm(end);
+    f_inf(deb:end) = f_harm(end)-1;
     
 else
     f_inf = (1:length(v))'-1;
