@@ -125,7 +125,7 @@ for t=2:T
 
     % Initialisation with PU
     for j=1:J
-        f_inf = freq_influence(abs(Se(:,t,j))+eps)-1;
+        f_inf = get_frequencies_qifft_frame(abs(Se(:,t,j))+eps);
         mu(:,t,j) = angle(Se(:,t-1,j))+Ct*f_inf;
         Se(:,t,j) = abs(Se(:,t,j)) .* exp(1i * mu(:,t,j));
     end
@@ -154,7 +154,7 @@ end
 
 
 % Inst. frequency and regions of influence
-function [f_inf,f_centr,f_harm] = freq_influence(mag)
+function [f_inf,f_centr,f_harm] = get_frequencies_qifft_frame(mag)
 
 % Input spectrum expected as row
 mag = mag(:)';
@@ -186,7 +186,7 @@ if (Nfreq >0)
         index_lim(ind) = fin;
     end
 
-    f_inf(deb:end) = f_harm(end);
+    f_inf(deb:end) = f_harm(end)-1;
     
 else
     f_inf = (1:length(mag))'-1;
