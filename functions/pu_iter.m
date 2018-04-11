@@ -1,9 +1,11 @@
 % Iterative source separation procedure using the phase unwrapping technique
 % initialization.
 %
-% Ref: "Model-based STFT phase recovery for audio source separation",
-% Paul Magron, Roland Badeau and Bertrand David
-% IEEE Transactions on Audio, Speech, and Language Processing, May 2018
+% Ref:
+% "Model-based STFT phase recovery for audio source separation",
+% Paul Magron, Roland Badeau and Bertrand David,
+% IEEE/ACM Transactions on Speech, Audio, and Language Processing
+% Vol 26, number 6, June 2018
 %
 % Inputs:
 %     X : F*T mixture
