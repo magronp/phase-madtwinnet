@@ -93,11 +93,14 @@ if (Nfreq >0)
         index_lim(ind) = fin;
     end
 
-    f_inf(deb:end) = f_harm(end)-1;
+    f_inf(deb:end) = f_harm(end);
     
 else
-    f_inf = (1:length(v))'-1;
+    f_inf = (1:length(v))';
 end
+
+%  Frequencies start from 0
+f_inf = f_inf-1;
 
 end
 
